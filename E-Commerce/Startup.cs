@@ -2,6 +2,7 @@ using E_Commerce.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,7 +26,10 @@ namespace E_Commerce
         public void ConfigureServices(IServiceCollection services)
         {
             //ConfigureServices
-            services.AddDbContext<EcommerceDbContext>();
+            services.AddDbContext<EcommerceDbContext>(optoins =>
+            {
+                optoins.UseSqlServer(Configuration.GetConnectionString("DefaultConnectioin"));
+            });
             services.AddControllersWithViews();
         }
 
