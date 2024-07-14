@@ -6,17 +6,16 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.Controllers
 {
-    public class CategoriesController : Controller
+    public class ProductsController : Controller
     {
         private readonly EcommerceDbContext _context;
-        public CategoriesController(EcommerceDbContext context)
+        public ProductsController(EcommerceDbContext context)
         {
             _context = context;
-
         }
         public async Task <IActionResult> Index()
         {
-            var Response =await _context.Categories.ToListAsync();
+            var Response =await _context.Products.ToListAsync();
             return View(Response);
         }
     }
