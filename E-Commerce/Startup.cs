@@ -57,7 +57,7 @@ namespace E_Commerce
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Products}/{action=Index}/{id?}");
             });
             AppDbInitializer.Seed(app);
         }
