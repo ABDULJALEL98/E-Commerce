@@ -20,5 +20,10 @@ namespace E_Commerce.Controllers
             var Response = await _services.GetALLAsycn();
             return View(Response);
         }
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
 }
