@@ -1,4 +1,4 @@
-﻿using E_Commerce.Data;
+﻿using E_Commerce.Enums.Data;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 

@@ -1,4 +1,5 @@
 ﻿using E_Commerce.Data;
+using E_Commerce.Data.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -8,15 +9,15 @@ namespace E_Commerce.Controllers
 {
     public class CategoriesController : Controller
     {
-        private readonly EcommerceDbContext _context;
-        public CategoriesController(EcommerceDbContext context)
+        private readonly ICategoryServices _services;
+        public CategoriesController(ICategoryServices services)
         {
-            _context = context;
+            _services = services;
 
         }
         public async Task <IActionResult> Index()
         {
-            var Response =await _context.Categories.ToListAsync();
+            var Response = await _services.GetALLAsycn();
             return View(Response);
         }
     }

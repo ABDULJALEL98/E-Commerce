@@ -1,4 +1,5 @@
-﻿using E_Commerce.Models;
+﻿using E_Commerce.Enums.Data;
+using E_Commerce.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
