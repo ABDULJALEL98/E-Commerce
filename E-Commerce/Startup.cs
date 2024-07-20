@@ -1,4 +1,5 @@
 using E_Commerce.Data;
+using E_Commerce.Data.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -31,6 +32,7 @@ namespace E_Commerce
                 optoins.UseSqlServer(Configuration.GetConnectionString("DefaultConnectioin"));
             });
             services.AddControllersWithViews();
+            services.AddScoped<ICategoryServices, CategoryServies>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
