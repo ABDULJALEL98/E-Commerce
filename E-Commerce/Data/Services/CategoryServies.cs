@@ -14,9 +14,10 @@ public class CategoryServies : ICategoryServices
         _context = context;
 
     }
-    public Task CreateAsync(Category entity)
+    public async Task CreateAsync(Category entity)
     {
-        throw new System.NotImplementedException();
+        await _context.Categories.AddAsync(entity);
+        await _context.SaveChangesAsync();
     }
 
     public Task DeleteAsync(int id)

@@ -1,5 +1,6 @@
 ﻿using E_Commerce.Data;
 using E_Commerce.Data.Services;
+using E_Commerce.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -24,6 +25,16 @@ namespace E_Commerce.Controllers
         public IActionResult Create()
         {
             return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("Name,Description")]Category category)
+        {
+            if(ModelState.IsValid)
+            {
+                await _services.CreateAsync(category);
+                return RedirectToAction(nameof(Index));
+            }
+            return View(category);
         }
     }
 }
