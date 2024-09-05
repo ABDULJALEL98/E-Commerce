@@ -36,5 +36,15 @@ namespace E_Commerce.Controllers
             }
             return View(category);
         }
+        [HttpGet]
+        public async Task<ActionResult> Details(int id)
+        {
+            var category = await _services.GetByIdAsync(id);
+            if(category != null)
+            {
+                return View(category);
+            }
+            return View();
+        }
     }
 }

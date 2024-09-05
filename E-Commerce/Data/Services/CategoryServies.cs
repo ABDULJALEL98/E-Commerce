@@ -29,10 +29,9 @@ public class CategoryServies : ICategoryServices
     => await _context.Categories.ToListAsync();
     
 
-    public Task<Category> GetByIdAsync(int id)
-    {
-        throw new System.NotImplementedException();
-    }
+    public async Task<Category> GetByIdAsync(int id)
+      => await _context.Categories.FirstOrDefaultAsync(x=> x.Id == id);
+   
 
     public Task UpdateAsync(Category entity)
     {
