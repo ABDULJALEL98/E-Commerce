@@ -33,8 +33,16 @@ public class CategoryServies : ICategoryServices
       => await _context.Categories.FirstOrDefaultAsync(x=> x.Id == id);
    
 
-    public Task UpdateAsync(Category entity)
+    public async Task UpdateAsync(Category entity)
     {
-        throw new System.NotImplementedException();
+        var CategoryId = await _context.Categories.FirstOrDefaultAsync(x => x.Id == entity.Id);
+        if(CategoryId != null)
+        {
+        CategoryId.Id = entity.Id;
+        CategoryId.Name = entity.Name;
+        CategoryId.Description = entity.Description;
+        await _context.SaveChangesAsync();
+        }
+        
     }
 }

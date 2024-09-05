@@ -37,7 +37,7 @@ namespace E_Commerce.Controllers
             return View(category);
         }
         [HttpGet]
-        public async Task<ActionResult> Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
             var category = await _services.GetByIdAsync(id);
             if(category != null)
@@ -45,6 +45,27 @@ namespace E_Commerce.Controllers
                 return View(category);
             }
             return View();
+        }
+        public async Task<IActionResult> Edit(int id)
+        {
+            var category = await _services.GetByIdAsync(id);
+            if (category != null)
+            {
+                return View(category);
+            }
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(Category category)
+        {
+           var categoryId = await _services.GetByIdAsync(category.Id);
+            if (!ModelState.IsValid && categoryId==null)
+            {
+                return View("NotFound");
+            }
+            await _services.UpdateAsync(category);
+            return RedirectToAction(nameof(Index));
+          
         }
     }
 }
