@@ -44,7 +44,7 @@ namespace E_Commerce.Controllers
             {
                 return View(category);
             }
-            return View();
+            return View("Not Found");
         }
         public async Task<IActionResult> Edit(int id)
         {
@@ -53,7 +53,7 @@ namespace E_Commerce.Controllers
             {
                 return View(category);
             }
-            return View();
+            return View("Not Found");
         }
         [HttpPost]
         public async Task<IActionResult> Edit(Category category)
