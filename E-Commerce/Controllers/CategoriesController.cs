@@ -67,5 +67,10 @@ namespace E_Commerce.Controllers
             return RedirectToAction(nameof(Index));
           
         }
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _services.DeleteAsync(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

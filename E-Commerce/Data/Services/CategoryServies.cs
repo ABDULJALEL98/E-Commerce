@@ -20,9 +20,14 @@ public class CategoryServies : ICategoryServices
         await _context.SaveChangesAsync();
     }
 
-    public Task DeleteAsync(int id)
+    public async Task DeleteAsync(int id)
     {
-        throw new System.NotImplementedException();
+       var categoryId = await _context.Categories.FirstOrDefaultAsync(x => x.Id == id);
+        if(categoryId != null)
+        {
+            _context.Categories.Remove(categoryId);
+            await _context.SaveChangesAsync();
+        }
     }
 
     public async Task<IEnumerable<Category>> GetALLAsycn()
